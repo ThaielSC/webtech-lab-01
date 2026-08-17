@@ -150,8 +150,12 @@ function updateEditorialOptions() {
     new Set(books.map((b) => b.publisher)),
   ).sort();
 
-  editorialFilter.innerHTML =
-    '<option value="todas">Todas las editoriales</option>';
+  editorialFilter.textContent = "";
+
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "todas";
+  defaultOption.textContent = "Todas las editoriales";
+  editorialFilter.appendChild(defaultOption);
 
   uniqueEditorials.forEach((editorial) => {
     const option = document.createElement("option");
@@ -276,6 +280,96 @@ if (themeToggleBtn) {
     document.body.classList.toggle("dark-theme");
     themeToggleBtn.setAttribute("aria-pressed", isDark ? "true" : "false");
     themeToggleBtn.textContent = isDark ? "Modo Claro" : "Modo Oscuro";
+  });
+}
+
+const contactForm = document.getElementById("contact-form");
+const contactName = document.getElementById("contact-name");
+const contactEmail = document.getElementById("contact-email");
+const contactMessage = document.getElementById("contact-message");
+const contactNameError = document.getElementById("contact-name-error");
+const contactEmailError = document.getElementById("contact-email-error");
+const contactMessageError = document.getElementById("contact-message-error");
+const contactSuccess = document.getElementById("contact-success");
+
+function validateName() {
+  if (!contactName) return true;
+  const val = contactName.value.trim();
+  if (!val) {
+    contactNameError.textContent = "El nombre completo es obligatorio.";
+    contactName.setAttribute("aria-invalid", "true");
+    return false;
+  }
+  if (val.length < 3) {
+    contactNameError.textContent =
+      "El nombre debe tener al menos 3 caracteres.";
+    contactName.setAttribute("aria-invalid", "true");
+    return false;
+  }
+  contactNameError.textContent = "";
+  contactName.removeAttribute("aria-invalid");
+  return true;
+}
+
+function validateEmail() {
+  if (!contactEmail) return true;
+  const val = contactEmail.value.trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!val) {
+    contactEmailError.textContent = "El correo electrónico es obligatorio.";
+    contactEmail.setAttribute("aria-invalid", "true");
+    return false;
+  }
+  if (!emailRegex.test(val)) {
+    contactEmailError.textContent =
+      "Ingrese un correo electrónico válido (ej. usuario@dominio.com).";
+    contactEmail.setAttribute("aria-invalid", "true");
+    return false;
+  }
+  contactEmailError.textContent = "";
+  contactEmail.removeAttribute("aria-invalid");
+  return true;
+}
+
+function validateMessage() {
+  if (!contactMessage) return true;
+  const val = contactMessage.value.trim();
+  if (!val) {
+    contactMessageError.textContent = "El mensaje es obligatorio.";
+    contactMessage.setAttribute("aria-invalid", "true");
+    return false;
+  }
+  if (val.length < 10) {
+    contactMessageError.textContent =
+      "El mensaje debe tener al menos 10 caracteres.";
+    contactMessage.setAttribute("aria-invalid", "true");
+    return false;
+  }
+  contactMessageError.textContent = "";
+  contactMessage.removeAttribute("aria-invalid");
+  return true;
+}
+
+if (contactName) contactName.addEventListener("input", validateName);
+if (contactEmail) contactEmail.addEventListener("input", validateEmail);
+if (contactMessage) contactMessage.addEventListener("input", validateMessage);
+
+if (contactForm) {
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (contactSuccess) contactSuccess.textContent = "";
+
+    const isNameValid = validateName();
+    const isEmailValid = validateEmail();
+    const isMessageValid = validateMessage();
+
+    if (isNameValid && isEmailValid && isMessageValid) {
+      contactForm.reset();
+      if (contactSuccess) {
+        contactSuccess.textContent =
+          "¡Gracias por tu mensaje! Nos pondremos en contacto pronto.";
+      }
+    }
   });
 }
 
