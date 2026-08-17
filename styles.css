@@ -315,12 +315,15 @@ form {
   gap: 1rem;
 }
 
-.form-group,
-.filter-group {
-  flex: 1 1 200px;
+.form-group {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+}
+
+.form-row .form-group,
+.filter-group {
+  flex: 1 1 200px;
 }
 
 label {
@@ -416,6 +419,39 @@ button[type="submit"]:hover,
   border-radius: 6px;
   color: var(--text-muted);
   font-style: italic;
+}
+
+.error-message {
+  color: #b91c1c;
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+  display: block;
+}
+
+.error-message:empty,
+.success-message:empty {
+  display: none;
+}
+
+.success-message {
+  color: #047857;
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+body.dark-theme .error-message {
+  color: #fca5a5;
+}
+
+body.dark-theme .success-message {
+  color: #6ee7b7;
+  background-color: #064e3b;
+  border-color: #059669;
 }
 
 footer {
