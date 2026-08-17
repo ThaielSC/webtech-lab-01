@@ -70,6 +70,109 @@ header {
   margin-bottom: 2rem;
 }
 
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn-theme {
+  background-color: #f4f4f5;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.8rem;
+  margin: 1em;
+  font-size: 0.85rem;
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.btn-theme:hover {
+  background-color: #e4e4e7;
+}
+
+html.dark-theme,
+body.dark-theme {
+  --bg-page: #09090b;
+  --paper-bg: #18181b;
+  --text-main: #f4f4f5;
+  --text-muted: #a1a1aa;
+  --border-color: #27272a;
+  --border-dark: #f4f4f5;
+}
+
+html.dark-theme {
+  background-color: var(--bg-page);
+}
+
+body.dark-theme {
+  background-color: var(--paper-bg);
+  color: var(--text-main);
+}
+
+body.dark-theme #habilidades li,
+body.dark-theme article,
+body.dark-theme .book-card,
+body.dark-theme .books-filter-bar,
+body.dark-theme .book-form-container,
+body.dark-theme select,
+body.dark-theme input[type="text"],
+body.dark-theme input[type="email"],
+body.dark-theme input[type="number"],
+body.dark-theme textarea {
+  background-color: #27272a;
+  color: #f4f4f5;
+  border-color: #3f3f46;
+}
+
+body.dark-theme input:focus,
+body.dark-theme select:focus,
+body.dark-theme textarea:focus {
+  background-color: #18181b;
+  border-color: #f4f4f5;
+}
+
+body.dark-theme .book-card.read {
+  background-color: #064e3b;
+  border-color: #059669;
+}
+
+body.dark-theme .btn-secondary,
+body.dark-theme .btn-theme {
+  background-color: #27272a;
+  color: #f4f4f5;
+  border-color: #3f3f46;
+}
+
+body.dark-theme .btn-secondary:hover,
+body.dark-theme .btn-theme:hover {
+  background-color: #3f3f46;
+}
+
+body.dark-theme button[type="submit"],
+body.dark-theme .btn-submit {
+  background-color: #f4f4f5;
+  color: #18181b;
+}
+
+body.dark-theme nav a:hover {
+  background-color: #27272a;
+}
+
+body.dark-theme .no-results {
+  background-color: #27272a;
+  border-color: #3f3f46;
+  color: #a1a1aa;
+}
+
 header h1 {
   font-size: 1.8rem;
   font-weight: 700;
