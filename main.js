@@ -268,5 +268,15 @@ if (booksContainer) {
   });
 }
 
+const themeToggleBtn = document.getElementById("theme-toggle");
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener("click", () => {
+    const isDark = document.body.classList.toggle("dark-theme");
+    themeToggleBtn.setAttribute("aria-pressed", isDark ? "true" : "false");
+    themeToggleBtn.textContent = isDark ? "Modo Claro" : "Modo Oscuro";
+  });
+}
+
 updateEditorialOptions();
 applyFilterAndRender();
