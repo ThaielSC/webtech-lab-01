@@ -30,6 +30,7 @@
           <li><a href="#habilidades">Habilidades</a></li>
           <li><a href="#proyectos">Proyectos</a></li>
           <li><a href="#books">Libros</a></li>
+          <li><a href="#wheelhouse">Wheelhouse</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
@@ -161,6 +162,20 @@
         <div id="books-container"></div>
       </section>
 
+      <section id="wheelhouse" aria-labelledby="wheelhouse-title">
+        <h2 id="wheelhouse-title">Servicios de Wheelhouse</h2>
+        <p>Lista de precios del taller en dólares estadounidenses (USD).</p>
+        <p id="services-status" role="status">Cargando servicios…</p>
+        <ul id="services-list"></ul>
+        <form id="service-search">
+          <label for="service-id">Consultar servicio por id</label>
+          <input id="service-id" name="id" type="number" min="1" step="1" required />
+          <button type="submit" class="btn-submit">Consultar</button>
+        </form>
+        <p id="service-status" role="status"></p>
+        <dl id="service-detail"></dl>
+      </section>
+
       <section id="contacto">
         <h2>Contacto</h2>
         <form id="contact-form" action="#" method="post" novalidate>
@@ -235,5 +250,6 @@
     </footer>
 
     <script src="main.js"></script>
+    <script type="module" src="wheelhouse.js"></script>
   </body>
 </html>

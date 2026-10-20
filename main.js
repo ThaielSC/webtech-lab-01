@@ -190,7 +190,7 @@ function applyFilterAndRender() {
     return matchesSearch && matchesEditorial;
   });
 
-  booksContainer.innerHTML = "";
+  booksContainer.replaceChildren();
 
   if (filteredBooks.length === 0) {
     const noResultsMsg = document.createElement("p");
